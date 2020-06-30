@@ -11,9 +11,18 @@ app = Flask(__name__)
 def index():
     number = None
     if request.method == 'POST':
+        try:
+            a = float(request.form["numA"])
+            b = float(request.form["numB"])
+            if b == 0:
+                raise ZeroDivisionError
+        except ValueError:
+            return render_template('index.html', error="Must imput numbers")
+        except ZeroDivisionError:
+            return render_template('index.html', error="Number B mustn't be zero")
         with DB() as db:
             db.execute("INSERT INTO numbers (numA, numB, data) VALUES (%s, %s, %s)",
-                        (request.form["numA"], request.form["numB"], request.form["data"]))
+                        (a, b, request.form["data"]))
             db.execute("SELECT id, numA, numB FROM numbers ORDER BY id DESC")
             id, numA, numB = db.fetchone()
             number = numA/numB + id

@@ -1,0 +1,21 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+<body>
+
+    <form action="/" method="post">
+        NumA:<input type="number" name="numA"><br>
+        NumB:<input type="number" name="numB"><br>
+        Data:<input type="text" name="data"><br>
+        <input type="submit" value="submit">
+    </form>
+
+    {% if number %}
+    <p>{{number}}</p>
+    {%endif%}
+
+</body>
+</html>

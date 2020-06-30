@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS numbers (id serial PRIMARY KEY, numA integer, numB integer, data varchar);

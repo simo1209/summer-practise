@@ -17,6 +17,7 @@ def index():
             try:
                 a = float(json["numA"])
                 b = float(json["numB"])
+                print(a,b)
                 if b == 0:
                     raise ZeroDivisionError
             except ValueError:
@@ -29,7 +30,7 @@ def index():
                 db.execute("SELECT id, numA, numB FROM numbers ORDER BY id DESC")
                 id, numA, numB = db.fetchone()
                 number = numA/numB
-            return jsonify({"result": number, "row":id}), 201
+            return jsonify({"result": float(number), "row":id}), 201
         
             
         return "nice", 201

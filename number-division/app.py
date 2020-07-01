@@ -8,7 +8,6 @@ from flask_limiter.util import get_remote_address
 
 from database import DB
 
-
 app = Flask(__name__)
 
 limiter = Limiter(
@@ -43,7 +42,5 @@ def index():
                 id, numA, numB = db.fetchone()
                 number = numA/numB
             return jsonify({"result": float(number), "row": id}), 201
-
-        return "nice", 201
     elif request.method == 'GET':
         return render_template('index.html', number=number), 200
